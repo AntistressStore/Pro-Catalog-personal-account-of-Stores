@@ -79,6 +79,7 @@ class UserProfileScreen extends Screen
                         ->method('save')
                 ),
 
+
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
