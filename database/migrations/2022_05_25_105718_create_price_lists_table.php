@@ -15,12 +15,14 @@ return new class extends Migration {
         Schema::create('price_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('online_shop_id')->nullable()->constrained('online_shops', 'id');
-            $table->string('name');
-            $table->string('description');
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
             $table->string('url');
-            $table->string('img');
-            $table->string('classservice');
-            $table->integer('active');
+            $table->string('login')->nullable();
+            $table->string('password')->nullable();
+            $table->string('img')->nullable();
+            $table->string('classservice')->nullable();
+            $table->integer('active')->nullable();
             $table->timestamps();
         });
     }

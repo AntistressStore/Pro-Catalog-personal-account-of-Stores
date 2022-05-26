@@ -2,6 +2,8 @@
 
 namespace App\Orchid\Screens\PriceList;
 
+use App\Models\PriceList;
+use App\Orchid\Layouts\PriceList\PriceListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
@@ -14,7 +16,7 @@ class PriceListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return ['pricelists' => \auth()->user()->pricelists];
     }
 
     /**
@@ -44,6 +46,6 @@ class PriceListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [PriceListLayout::class];
     }
 }

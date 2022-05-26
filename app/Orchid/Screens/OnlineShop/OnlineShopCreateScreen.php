@@ -82,7 +82,7 @@ class OnlineShopCreateScreen extends Screen
 
                     Select::make('legal_type')
                         ->title('Тип организации')
-                        ->options(['ИП', 'ООО', 'AO', 'ПАО', 'ЗАО'])
+                        ->options(['IP' => 'ИП', 'OOO' => 'ООО', 'AO' => 'AO', 'PAO' => 'ПАО', 'ZAO' => 'ЗАО'])
                         ->required(),
 
                     Input::make('ogrn')
@@ -99,7 +99,7 @@ class OnlineShopCreateScreen extends Screen
                         ->required(),
                     Input::make('url')
                         ->title('Страница, где указаны юридические данные организации')
-                        ->placeholder('Введите url адрес')->type('url')
+                        ->placeholder('Введите url адрес начиная с http://')->type('url')
                         //->help("Введите ОГРН организации")
                         ->required(),
                 ])->title('Юридические данные'),
@@ -126,7 +126,7 @@ class OnlineShopCreateScreen extends Screen
                         ->required(),
                     Input::make('im_url')
                         ->title('Страница интернет магазина')
-                        ->placeholder('Введите url адрес')->type('url')
+                        ->placeholder('Введите url адрес начиная с http://')->type('url')
                         //->help("Введите ОГРН организации")
                         ->required(),
 

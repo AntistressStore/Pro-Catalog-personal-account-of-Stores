@@ -19,6 +19,11 @@ class OnlineShopListLayout extends Table
      */
     protected $target = 'onlineshops';
 
+    protected function textNotFound(): string
+    {
+        return __('Магазины не добавлены. Вы можете их добавить нажав кнопку "Добавить магазин"');
+    }
+
     /**
      * Get the table cells to be displayed.
      *

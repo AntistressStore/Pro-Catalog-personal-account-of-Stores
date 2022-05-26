@@ -7,7 +7,7 @@ use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\{Input, Select};
+use Orchid\Screen\Fields\{Input, Password, Select};
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\{Alert, Layout};
 
@@ -64,24 +64,41 @@ class PriceListCreateScreen extends Screen
         $onlineshops = Auth::user()->onlineshops;
 
         return [
-            Layout::rows([
-                Select::make('online_shop_id')
-                    ->title('Интернет магазин')
-                    ->options(
-                        array_combine(
-                        $onlineshops->pluck('id')->toArray(),
-                        $onlineshops->pluck('name')->toArray()
+            Layout::columns([
+                Layout::rows([
+                    Select::make('online_shop_id')
+                        ->title('Интернет магазин')
+                        ->options(
+                            array_combine(
+                            $onlineshops->pluck('id')->toArray(),
+                            $onlineshops->pluck('name')->toArray()
+                            )
                         )
-                    )
-                    ->required(),
+                        ->required(),
 
-                Input::make('url')
-                    ->title('Cсылка на файл')
-                    ->placeholder('Ссылка')
-                    //->help("Введите ОГРН организации")
-                    ->required()
-                // ->popover('Tooltip - hint that user opens himself.')
-                ,
+                    Input::make('url')
+                        ->title('Cсылка на файл')
+                        ->placeholder('Ссылка')
+                        ->required()
+                    ,
+                    Input::make('name')
+                        ->title('Название')
+                        ->placeholder('Ссылка')
+                        ->help("Введите любое название в это поле, чтобы отличить один список от другого")
+                    ,
+                ])->title('Анкета магазина'),
+                Layout::rows([
+                    Input::make('login')
+                        ->title('Логин')
+                        ->placeholder('Логин')
+                        ->help("Если для доступа нужен логин и пароль, введите Логин в это поле. В противном случае оставьте пустым"),
+
+                        Password::make('password')
+                        ->title('Пароль')
+                        ->placeholder('Пароль')
+                        ->help("Если для доступа нужен логин и пароль, введите Пароль в это поле. В противном случае оставьте пустым")
+                    ,
+                ])->title('Доступы (при необходимости)'),
             ]),
         ];
     }

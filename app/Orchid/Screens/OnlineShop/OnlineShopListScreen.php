@@ -4,8 +4,7 @@ namespace App\Orchid\Screens\OnlineShop;
 
 use App\Models\OnlineShop;
 use App\Orchid\Layouts\OnlineShop\OnlineShopListLayout;
-use Orchid\Screen\Actions\{Button, Link};
-use Orchid\Screen\Fields\{CheckBox, Input, Select};
+use Orchid\Screen\Actions\{Link};
 use Orchid\Screen\Screen;
 
 class OnlineShopListScreen extends Screen
@@ -18,7 +17,7 @@ class OnlineShopListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'onlineshops' => OnlineShop::paginate(),
+            'onlineshops' => OnlineShop::where('user_id',\auth()->user()->id)->paginate(),
         ];
     }
 
