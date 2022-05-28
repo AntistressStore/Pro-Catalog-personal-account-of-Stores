@@ -32,7 +32,7 @@ class PriceListCreateScreen extends Screen
     }
 
     public function store(Request $request): Redirector|RedirectResponse
-    { //dd($request->all());
+    {
         PriceList::create($request->all());
 
         Alert::info('Новый прайс лист успешно добавлен\обновлен');
